@@ -1,0 +1,103 @@
+.slideshow {
+    position: relative;
+    background-color: $color--black;
+    margin: 5px 0;
+
+    @include for-tablet-portrait-up {
+        margin: 10px 0;
+    }
+
+    &__slides {
+        position: relative;
+        height: 250px;
+        padding: 0;
+        margin: 0;
+
+        @include for-tablet-portrait-up {
+            height: 400px;
+        }
+    }
+
+    &__slide {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        z-index: 1;
+        transition: opacity .5s;
+
+        &--active {
+            opacity: 1;
+            z-index: 2;
+        }
+    }
+
+    &__image {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    &__image-title {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        padding: 5px 10px;
+        background-color: $color--white;
+        color: $color--ocean-blue;
+        text-align: right;
+        font-style: italic;
+
+        @include for-tablet-portrait-up {
+            font-size: 0.8em;
+        }
+    }
+    
+    &__controls {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 3;
+    }
+
+    &__button {
+        background-color: rgba($color--white, .7);
+        color: $color--ocean-blue;
+        border-width: 0;
+        margin: 0;
+        padding: 10px 2px;
+        cursor: pointer;
+
+        @include for-tablet-portrait-up {
+            padding: 15px 5px;
+        }
+
+        &:hover {
+            background-color: $color--white;
+        }
+
+        &:after {
+            @extend .icon;
+            font-size: $font-size--medium;
+        }
+
+        &--back:after {
+            content: $icon--arrow-left;
+        }
+        &--forward:after {
+            content: $icon--arrow-right;
+        }
+    }
+
+
+}
